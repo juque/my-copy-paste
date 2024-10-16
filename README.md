@@ -2,7 +2,7 @@
 
 My personal copy paste app.
 
-## Stack:
+## Stack:
 
 * PHP 8.2
 * Laravel 11
