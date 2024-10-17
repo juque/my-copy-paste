@@ -13,15 +13,10 @@
   <div class="container mx-auto">
     <h1 class="font-black text-6xl">My Copy Paste</h1>
 
-    @if (session('success'))
+    {{ $slot }}
 
-      <div class="">
-        {{ session('success') }}
-      </div>
+    <x-flash />
 
-    @endif
-
-   {{ $slot }}
   </div>
 </body>
 </html>
