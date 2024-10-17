@@ -6,9 +6,13 @@
 <p><a href="{{ route('snippets.create') }}">Nuevo</a></p>
 
 @foreach($snippets as $snippet)
-  <div class="border mt-10">
-    <p>{{ $snippet->id }}. {{ $snippet->content }}</p>
-    <p>{{ $snippet->note }}</p>
+  <div class="flex border mt-10">
+    <div class="mt-1">#{{ $snippet->id }}</div> 
+    <div class="pl-2">
+        <p class="text-2xl">{{ $snippet->title }} </p>
+        <p class="font-mono">{{ $snippet->content }}</p>
+        <p class="text-sm text-gray-400">{{ $snippet->note }}</p>
+    </div>
   </div>
 @endforeach
 
