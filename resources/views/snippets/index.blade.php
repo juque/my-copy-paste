@@ -1,6 +1,9 @@
 <x-layout>
 
-<h2>Snippets</h2>
+    <x-slot:heading>
+      Snippets
+    </x-slot:heading>
+
 
 <p><a href="{{ route('snippets.create') }}">Nuevo</a></p>
 
