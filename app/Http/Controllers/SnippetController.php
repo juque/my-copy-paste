@@ -77,4 +77,9 @@ class SnippetController extends Controller
     {
         //
     }
+
+    public function showByTag($tag) {
+      $snippets = Snippet::withAnyTags([$tag])->get();
+      return view('snippets.by-tag', compact('snippets', 'tag'));
+    }
 }

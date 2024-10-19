@@ -1,4 +1,3 @@
-<div>
 <x-layout>
 
 <h2>Snippets</h2>
@@ -20,7 +19,7 @@
         <div class="tags">
           @if($snippet->tags->isNotEmpty())
             @foreach ($snippet->tags as $tag)
-              <span class="tag">{{ $tag->name }}</span>
+              <span class="tag"><a href="{{ route('snippets.byTag', $tag->name) }}">{{ $tag->name }}</a></span>
             @endforeach
           @endif
         </div>
@@ -29,5 +28,3 @@
 @endforeach
 
 </x-layout>
-    <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
-</div>
