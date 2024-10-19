@@ -12,7 +12,7 @@ class SnippetController extends Controller
      */
     public function index()
     {
-      $snippets = Snippet::all();
+      $snippets = Snippet::with('tags')->get();
       return view('snippets.index', ['snippets' => $snippets ]);
     }
 
@@ -29,13 +29,19 @@ class SnippetController extends Controller
      */
     public function store(Request $request)
     {
+
       $request->validate([
         'title'   => 'required',
         'content' => 'required',
         'note'    => 'required'
       ]);
 
-      Snippet::create($request->all());
+      $snippet = Snippet::create($request->all());
+
+      collect(explode(',', $request->tags ?? ''))
+        ->filter()
+        ->map(fn($tag) => trim($tag))
+        ->whenNotEmpty(fn($tags) => $snippet->syncTags($tags->toArray()));
 
       return redirect()->route('snippets.index')->with('success', 'Snippet Creado exitosamente');
     }

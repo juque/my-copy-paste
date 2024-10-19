@@ -17,6 +17,13 @@
         <p class="text-2xl">{{ $snippet->title }} </p>
         <p id="snippet-{{ $snippet->id }}" class="font-mono clipboard">{{ $snippet->content }}</p>
         <p class="text-sm text-gray-400">{{ $snippet->note }}</p>
+        <div class="tags">
+          @if($snippet->tags->isNotEmpty())
+            @foreach ($snippet->tags as $tag)
+              <span class="tag">{{ $tag->name }}</span>
+            @endforeach
+          @endif
+        </div>
     </div>
   </div>
 @endforeach

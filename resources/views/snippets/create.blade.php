@@ -47,6 +47,14 @@
       </div>
 
       <div>
+          
+        <label for="tags">Tags</label>
+
+        <input type="text" name="tags" value="{{ old('tags') }}" />
+
+      </div>
+
+      <div>
 
         <button type="submit" class="">Create</button>
 
