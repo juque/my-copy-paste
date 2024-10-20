@@ -11,11 +11,15 @@
 
 <body>
   <div class="container mx-auto">
-    <h1 class="font-black text-6xl"><a href="{{ route('snippets.index') }}">My Copy Paste</a></h1>
+    <div class="max-w-sm mx-auto text-center">
 
-    @isset($heading)
-      <h3 class="text-3xl font-bold my-5">{{ $heading }}</h3>
-    @endisset
+      <h1 class="font-black text-4xl"><a href="{{ route('snippets.index') }}">My Copy Paste</a></h1>
+
+      @isset($heading)
+        <h3 class="text-3xl font-bold my-5">{{ $heading }}</h3>
+      @endisset
+
+    </div>
 
     {{ $slot }}
 
