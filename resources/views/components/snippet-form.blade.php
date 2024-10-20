@@ -25,7 +25,7 @@
       <div class="mb-5">
 
         <x-form-label for="note">Nota</x-form-label>
-        <x-form-input name="note" /> 
+        <x-form-textarea name="note" />
 
       </div>
 
