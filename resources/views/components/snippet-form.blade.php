@@ -10,7 +10,7 @@
 
       <div class="mb-5">
 
-        <x-form-label for="title">Title</x-form-label>
+        <x-form-label for="title">Título</x-form-label>
         <x-form-input name="title" />
 
       </div>
@@ -25,7 +25,7 @@
       <div class="mb-5">
 
         <x-form-label for="note">Nota</x-form-label>
-        <x-form-textarea name="note" />
+        <x-form-input name="note" /> 
 
       </div>
 
