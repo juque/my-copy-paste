@@ -38,7 +38,7 @@ class SnippetController extends Controller
 
       $snippet = Snippet::create($request->all());
 
-      collect(explode(',', $request->tags ?? ''))
+      collect(preg_split('/[,\s]+/', $request->tags ?? ''))
         ->filter()
         ->map(fn($tag) => trim($tag))
         ->whenNotEmpty(fn($tags) => $snippet->syncTags($tags->toArray()));
