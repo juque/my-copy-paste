@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Snippet;
 use Illuminate\Http\Request;
+use Spatie\Tags\Tag;
 
 class SnippetController extends Controller
 {
@@ -12,8 +13,9 @@ class SnippetController extends Controller
      */
     public function index()
     {
+      $tags = Tag::all();
       $snippets = Snippet::with('tags')->get();
-      return view('snippets.index', ['snippets' => $snippets ]);
+      return view('snippets.index', ['snippets' => $snippets, 'tags' => $tags ]);
     }
 
     /**
