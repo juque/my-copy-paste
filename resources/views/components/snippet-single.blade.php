@@ -1,6 +1,6 @@
 @props(['snippet' => null ])
 
-<div class="flex border mt-10">
+<div class="flex border mt-10 shadow-lg p-4">
   <div class="mt-1">#{{ $snippet->id }}</div> 
   <div class="pl-2 flex-grow">
     <div class="float-right">
