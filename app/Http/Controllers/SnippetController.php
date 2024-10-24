@@ -53,7 +53,7 @@ class SnippetController extends Controller
      */
     public function show(Snippet $snippet)
     {
-        //
+      return view('snippets.show', ['snippet' => $snippet]);
     }
 
     /**
