@@ -72,36 +72,20 @@ class SnippetController extends Controller
     {
 
       $validated = $request->validate([
-        'title' => 'required|string|max:255',
-        'content' => 'required|string',
-        'note' => 'nullable|string',
-        'tags' => 'nullable|string'
+        'title'   => 'required',
+        'content' => 'required',
+        'note'    => 'nullable',
       ]);
 
-      $snippet->update([
-        'title' => $validated['title'],
-        'content' => $validated['content'],
-        'note' => $validated['note']
-      ]);
+      $snippet->update($request->all());
 
-      // if (isset($validated['tags'])) {
-
-      //   $tagNames = array_map('trim', explode(',', $validated['tags']));
-
-      //   $tagNames = array_filter($tagNames);
-
-      //   $tags = collect($tagNames)->map(function ($tagName) {
-      //     return Tag::firstOrCreate(['name' => $tagName]);
-      //   });
-
-      //   $snippet->tags()->sync($tags->pluck('id'));
-      // 
-      // } else {
-      //   $snippet->tags()->detach();
-      // }
+      collect(preg_split('/[,\s]+/', $request->tags ?? ''))
+        ->filter()
+        ->map(fn($tag) => trim($tag))
+        ->whenNotEmpty(fn($tags) => $snippet->syncTags($tags->toArray()));
 
       return redirect()->route('snippets.index')
-         ->with('message', 'Snippet actualizado exitosamente.');
+                       ->with('success', 'Snippet actualizado exitosamente.');
 
     }
 
