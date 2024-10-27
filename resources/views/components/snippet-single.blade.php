@@ -1,5 +1,11 @@
 @props(['snippet' => null ])
 
+@if(isRoute('snippets.show'))
+  <div class="my-10 py-3 text-center border rounded-xl bg-[#ff0084] text-white">
+    <a class="text-4xl" href="{{ route('snippets.edit', $snippet->id) }}">Editar este snippet</a>
+  </div>
+@endif
+
 <div class="flex border mt-10 shadow-lg p-4 rounded-xl">
   <div class="mt-1">#{{ $snippet->id }}</div> 
   <div class="pl-2 flex-grow">
