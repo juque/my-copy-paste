@@ -84,7 +84,7 @@ class SnippetController extends Controller
         ->map(fn($tag) => trim($tag))
         ->whenNotEmpty(fn($tags) => $snippet->syncTags($tags->toArray()));
 
-      return redirect()->route('snippets.index')
+      return redirect()->route('snippets.show',['snippet' => $snippet->id])
                        ->with('success', 'Snippet actualizado exitosamente.');
 
     }
