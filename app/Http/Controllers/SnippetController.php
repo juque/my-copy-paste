@@ -15,7 +15,7 @@ class SnippetController extends Controller
     {
       $tags = Tag::all();
       $snippets = Snippet::with('tags')->get();
-      return view('snippets.index', ['snippets' => $snippets, 'tags' => $tags ]);
+      return view('snippets.index', ['snippets' => $snippets, 'tags' => $tags]);
     }
 
     /**
@@ -61,7 +61,8 @@ class SnippetController extends Controller
      */
     public function edit(Snippet $snippet)
     {
-        //
+      $tagString = $snippet->tags->pluck('name')->implode(', ');
+      return view('snippets.edit', ['snippet' => $snippet, 'tagString' => $tagString]);
     }
 
     /**
@@ -69,7 +70,39 @@ class SnippetController extends Controller
      */
     public function update(Request $request, Snippet $snippet)
     {
-        //
+
+      $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'content' => 'required|string',
+        'note' => 'nullable|string',
+        'tags' => 'nullable|string'
+      ]);
+
+      $snippet->update([
+        'title' => $validated['title'],
+        'content' => $validated['content'],
+        'note' => $validated['note']
+      ]);
+
+      // if (isset($validated['tags'])) {
+
+      //   $tagNames = array_map('trim', explode(',', $validated['tags']));
+
+      //   $tagNames = array_filter($tagNames);
+
+      //   $tags = collect($tagNames)->map(function ($tagName) {
+      //     return Tag::firstOrCreate(['name' => $tagName]);
+      //   });
+
+      //   $snippet->tags()->sync($tags->pluck('id'));
+      // 
+      // } else {
+      //   $snippet->tags()->detach();
+      // }
+
+      return redirect()->route('snippets.index')
+         ->with('message', 'Snippet actualizado exitosamente.');
+
     }
 
     /**

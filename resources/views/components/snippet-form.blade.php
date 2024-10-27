@@ -1,4 +1,4 @@
-@props(['snippet' => null, 'method' => null, 'action'])
+@props(['snippet' => null, 'method' => null, 'action', 'tagString' => null])
 
 <form class="max-w-sm mx-auto" action="{{ $action }}" method="POST">
 
@@ -11,28 +11,28 @@
       <div class="mb-5">
 
         <x-form-label for="title">Título</x-form-label>
-        <x-form-input name="title" />
+        <x-form-input name="title" :value="old('title', $snippet->title ?? '')" />
 
       </div>
 
       <div class="mb-5">
 
         <x-form-label for="content">Contenido</x-form-label>
-        <x-form-input name="content" /> 
+        <x-form-input name="content" :value="old('content', $snippet->content ?? '')" /> 
 
       </div>
 
       <div class="mb-5">
 
         <x-form-label for="note">Nota</x-form-label>
-        <x-form-textarea name="note" />
+        <x-form-textarea name="note" :value="old('note', $snippet->note ?? '')" />
 
       </div>
 
       <div class="mb-5">
 
         <x-form-label for="tags">Tags</x-form-label>
-        <x-form-input name="tags" /> 
+        <x-form-input name="tags" :value="old('tags', $tagString ?? '')" /> 
           
       </div>
 
