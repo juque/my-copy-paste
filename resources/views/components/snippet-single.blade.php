@@ -16,7 +16,11 @@
     </div>
     <p class="text-2xl"><a class="hover:text-red-500" href="{{ route('snippets.show', $snippet) }}">{{ $snippet->title }}</a></p>
     <p id="snippet-{{ $snippet->id }}" class="font-mono clipboard">{{ $snippet->content }}</p>
-    <p class="text-sm text-gray-400">{{ $snippet->note }}</p>
+    <p class="text-sm text-gray-400">
+      <x-markdown>
+        {!! $snippet->note !!}
+      </x-markdown>
+    </p>
     <div class="tags">
       @if($snippet->tags->isNotEmpty())
         @foreach ($snippet->tags as $tag)
