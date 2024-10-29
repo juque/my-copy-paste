@@ -21,10 +21,10 @@
         {!! $snippet->note !!}
       </x-markdown>
     </p>
-    <div class="tags">
+    <div class="tags my-3">
       @if($snippet->tags->isNotEmpty())
         @foreach ($snippet->tags as $tag)
-          <span class="tag"><a href="{{ route('snippets.byTag', $tag->name) }}">{{ $tag->name }}</a></span>
+          <span class="tag p-1.5 rounded-2xl text-white text-sm bg-color-base-500"><a href="{{ route('snippets.byTag', $tag->name) }}">{{ $tag->name }}</a></span>
         @endforeach
       @endif
     </div>
