@@ -1,5 +1,8 @@
 <x-layout>
-<h2>Snippets etiquetados con "{{ $tag }}"</h2>
+
+<h2 class="pt-10 text-center">
+  Snippets etiquetados con «<em>{{ $tag }}</em>»
+</h2>
 
 @if ($snippets->isEmpty())
     <p>No hay snippets con este tag.</p>
