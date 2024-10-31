@@ -1,6 +1,6 @@
 @props(['snippet' => null, 'method' => null, 'action', 'tagString' => null])
 
-<form class="max-w-sm mx-auto" action="{{ $action }}" method="POST">
+<form class="max-w-lg mx-auto" action="{{ $action }}" method="POST">
 
      @csrf
 
@@ -25,7 +25,7 @@
       <div class="mb-5">
 
         <x-form-label for="note">Nota</x-form-label>
-        <x-form-textarea name="note" :value="old('note', $snippet->note ?? '')" />
+        <x-form-textarea class="min-h-[200px]" name="note" :value="old('note', $snippet->note ?? '')" />
 
       </div>
 
