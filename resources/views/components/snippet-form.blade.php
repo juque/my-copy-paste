@@ -38,7 +38,7 @@
 
       <div>
 
-        <x-form-button />
+        <x-form-button class="w-full" />
 
       </div>
 
