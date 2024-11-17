@@ -33,7 +33,7 @@
 
     </div>
 
-    <div class="py-3 text-sm text-gray-500">
+    <div class="py-3 prose lg:prose-xl">
       <x-markdown>
         {!! $snippet->note !!}
       </x-markdown>
