@@ -6,7 +6,7 @@
     <a class="text-4xl" href="{{ route('snippets.create') }}">Nuevo</a>
   </div>
 
-  <div class="tags text-center">
+  <div class="max-w-2xl mx-auto tags text-center">
     @foreach($tags as $tag)
       <span class="inline-block border bg-slate-700 text-white rounded-2xl p-2">
         <a href="{{ route('snippets.byTag', $tag->name) }}">{{ $tag->name }}</a>
